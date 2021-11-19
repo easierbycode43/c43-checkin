@@ -335,14 +335,32 @@ onMount(() => {
     const camera = new Camera( document.body );
     const music = new Music()
 
-    setTimeout(() => {
+    new Tone.ToneAudioBuffers({
+        0: '/applause.mp3',
+        1: '/crash.mp3',
+        2: '/end.mp3',
+        3: '/fill0.mp3',
+        4: '/fill1.mp3',
+        5: '/fill2.mp3',
+        6: '/racer.mp3',
+        7: '/reverseCrash.mp3',
+        8: '/shutter.mp3',
+        9: '/siren.mp3',
+        10: '/voice/alright.mp3',
+        11: '/voice/herewego.mp3',
+        12: '/voice/herewegogo.mp3',
+        13: '/voice/readytoexplore.mp3',
+        14: '/voice/takeapicture.mp3',
+        15: '/voice/yeah.mp3',
+        16: '/voice/yeahup.mp3'
+    }, () => {
     camera.open().then(() => {
         console.log( '!! huzzah !!' );
         // closeButton.show()
         const time = music.start()
         // return voice.intro(time)
     });
-    }, 5000);
+    });
 
 })
 </script>
