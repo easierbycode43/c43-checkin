@@ -19,6 +19,7 @@
   },
   "type": "module",
   "dependencies": {
+    "startaudiocontext": "^1.2.1",
     "three": "^0.134.0",
     "tone": "^14.8.32",
     "tween.js": "^16.6.0"
