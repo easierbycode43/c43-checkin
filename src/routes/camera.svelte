@@ -251,6 +251,7 @@
 	close(){
 		this._video.pause()
 		return this._canvas.fail().then( () => {
+			// @ts-ignore
 			this._video.srcObject.getVideoTracks()[0].stop()
 		})
 	}
