@@ -10,6 +10,7 @@ import { onMount } from 'svelte';
 import Config from './config';
 import Music from './music';
 import StartAudioContext from 'startaudiocontext';
+import Close from './close';
 
 
 const CAMERA_DIST = 10
@@ -347,12 +348,13 @@ onMount(() => {
     Config.fadeOutTime = Tone.Time('4m').toSeconds();
 
     const camera = new Camera( document.body );
-    const music = new Music()
+    const closeButton = new Close(document.body);
+    const music = new Music();
 
     new Tone.ToneAudioBuffers(music.buffers, () => {
         camera.open().then(() => {
             console.log( '!! huzzah !!' );
-            // closeButton.show()
+            closeButton.show()
             const time = music.start()
             // return voice.intro(time)
         });

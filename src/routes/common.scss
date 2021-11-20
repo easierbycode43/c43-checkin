@@ -1,0 +1,38 @@
+$closeSize : 25px;
+
+@mixin closeButton {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: $closeSize;
+	height: $closeSize;
+	background-image: url(/x_button.png);
+    background-size: 100% 100%;
+	color: white;
+	pointer-events: none;
+	opacity: 0;
+	cursor: pointer;
+	z-index: 100001;
+	transition: transform 0.2s;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+
+	&.visible {
+		opacity: 1;
+		pointer-events: initial;
+
+		&:hover {
+			transform: scale(1.1);
+
+			&:active {
+				opacity: 0.4;
+			}
+		}
+
+	}
+}
+
+@mixin yellowLink {
+	color: rgb(251, 240, 57);
+    text-decoration: underline;
+    cursor: pointer;
+}
