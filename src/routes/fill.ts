@@ -31,6 +31,7 @@ export default class Fill{
 		}
 
 		this._crash = new Tone.Player('/crash.mp3').toDestination()
+		this.buffers.push( this._crash.buffer );
 	}
 
 	fill(){

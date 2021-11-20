@@ -1,4 +1,5 @@
 
+import type { ToneAudioBuffer } from 'tone'
 import * as Tone from 'tone'
 const Player = Tone.Player
 import Config from './config'
@@ -13,8 +14,12 @@ export default class BackgroundMusic {
     private _outro: Tone.Player
     private _applause: Tone.Player
     private _ended: boolean
+
+	public buffers: ToneAudioBuffer[] = []
+
 	constructor(){
 		this._player = new Player('/racer.mp3').toDestination()
+		this.buffers.push( this._player.buffer );
 		this._player.volume.value = backgroundVolume
 
 		const startLoop = MusicPosition.backgroundLoop
@@ -25,9 +30,11 @@ export default class BackgroundMusic {
 
 		//the outro music		
 		this._outro = new Player('/end.mp3').toDestination()
+		this.buffers.push( this._outro.buffer );
 		this._outro.volume.value = -2
 
 		this._applause = new Player('/applause.mp3').toDestination()
+		this.buffers.push( this._applause.buffer );
 		this._applause.volume.value = -4
 
 		this._ended = false

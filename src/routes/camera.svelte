@@ -1,4 +1,4 @@
-<script>
+<script type='ts'>
 
 // import './camera.scss';
 
@@ -10,6 +10,7 @@ import { onMount } from 'svelte';
 import Config from './config';
 import Music from './music';
 import StartAudioContext from 'startaudiocontext';
+import type { ToneAudioBuffer } from 'tone';
 
 
 const CAMERA_DIST = 10
@@ -18,6 +19,18 @@ const TWO_PI = Math.PI * 2
 
 
 class Canvas {
+private _camera: any;
+private _scene: any;
+private _renderer: any;
+private _plane: any;
+private _bouncing: boolean;
+private _bounceStart: number;
+private _bounceRate: number;
+private _changingColor: boolean;
+private _colorChangeTime: number;
+private _colors: any[];
+private _colorChangeIndex: number;
+private _interval: NodeJS.Timer;
     constructor(container){
 
         this._camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 )
@@ -50,7 +63,7 @@ class Canvas {
 
         this._colorChangeTime = 0
 
-        this._colorChangeIndex = 0
+        this._colorChangeTime = 0
 
         this._colors = [[7,222,0],[9,51,255],[93,17,255],[101,177,255],[255,42,2],[255,181,115],[250,196,0],[5,153,0],[255,251,83],[46,220,0],[246,168,0],[182,87,255],[194,208,0]]
             .map((rgb) => new THREE.Color(rgb[0] / 255, rgb[1] / 255, rgb[2] / 255))
@@ -58,7 +71,7 @@ class Canvas {
         this._loop()
     }
 
-    _loop(time){
+    _loop(time?){
         requestAnimationFrame(this._loop.bind(this))
 
         let now = Date.now()
@@ -178,7 +191,7 @@ class Canvas {
                 })
                 .onComplete(function(){
                     scene.remove(plane)
-                    end()
+                    end( void( 0 ) )
                 })
                 .easing(TWEEN.Easing.Quadratic.Out)
                 .start()
@@ -187,6 +200,10 @@ class Canvas {
 }
 
 class Camera {
+    private _canvas: Canvas;
+    private _video: HTMLVideoElement;
+    private _constraints: { audio: boolean; video: { facingMode: { ideal: string; }; }; };
+    private _frontFacing: boolean;
 	constructor(container) {
 
 		this._canvas = new Canvas(container)
@@ -335,31 +352,13 @@ onMount(() => {
     const camera = new Camera( document.body );
     const music = new Music()
 
-    new Tone.ToneAudioBuffers({
-        0: '/applause.mp3',
-        1: '/crash.mp3',
-        2: '/end.mp3',
-        3: '/fill0.mp3',
-        4: '/fill1.mp3',
-        5: '/fill2.mp3',
-        6: '/racer.mp3',
-        7: '/reverseCrash.mp3',
-        8: '/shutter.mp3',
-        9: '/siren.mp3',
-        10: '/voice/alright.mp3',
-        11: '/voice/herewego.mp3',
-        12: '/voice/herewegogo.mp3',
-        13: '/voice/readytoexplore.mp3',
-        14: '/voice/takeapicture.mp3',
-        15: '/voice/yeah.mp3',
-        16: '/voice/yeahup.mp3'
-    }, () => {
-    camera.open().then(() => {
-        console.log( '!! huzzah !!' );
-        // closeButton.show()
-        const time = music.start()
-        // return voice.intro(time)
-    });
+    new Tone.ToneAudioBuffers(music.buffers, () => {
+        camera.open().then(() => {
+            console.log( '!! huzzah !!' );
+            // closeButton.show()
+            const time = music.start()
+            // return voice.intro(time)
+        });
     });
 
 })

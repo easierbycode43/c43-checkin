@@ -6,7 +6,7 @@ import Background from './background'
 // const Time = Tone.Time
 import Fill from './fill'
 import Config from './config'
-import type { ToneAudioBuffer } from 'tone'
+import type { ToneAudioBuffer, ToneAudioBuffers, ToneAudioBuffersUrlMap } from 'tone'
 const Master = Tone.Destination
 // import MusicPosition from './position'
 
@@ -17,7 +17,7 @@ export default class Music{
     private _fill: Fill
     private _speaker: any
 
-	public buffers: ToneAudioBuffer[]
+	public buffers: ToneAudioBuffersUrlMap
 
 	constructor(){
 
@@ -25,7 +25,13 @@ export default class Music{
 
 		this._fill = new Fill()
 
-		this.buffers = this._fill.buffers;
+		let buffers = this._fill.buffers.concat( this._bgMusic.buffers );
+		buffers.forEach(( buffer, idx ) => {
+			if ( idx === 0 )  return this.buffers = {}, this.buffers[0] = buffer;
+			this.buffers[idx] = buffer;
+		});
+
+		return this;
 
 	}
 
