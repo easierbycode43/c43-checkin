@@ -10,12 +10,9 @@ import { onMount } from 'svelte';
 import Config from './config';
 import Music from './music';
 import StartAudioContext from 'startaudiocontext';
-import type { ToneAudioBuffer } from 'tone';
 
 
 const CAMERA_DIST = 10
-
-const TWO_PI = Math.PI * 2
 
 
 class Canvas {
