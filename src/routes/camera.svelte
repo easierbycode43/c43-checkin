@@ -19,18 +19,18 @@ const TWO_PI = Math.PI * 2
 
 
 class Canvas {
-private _camera: any;
-private _scene: any;
-private _renderer: any;
-private _plane: any;
-private _bouncing: boolean;
-private _bounceStart: number;
-private _bounceRate: number;
-private _changingColor: boolean;
-private _colorChangeTime: number;
-private _colors: any[];
-private _colorChangeIndex: number;
-private _interval: NodeJS.Timer;
+    private _camera: any;
+    private _scene: any;
+    private _renderer: any;
+    private _plane: any;
+    private _bouncing: boolean;
+    private _bounceStart: number;
+    private _bounceRate: number;
+    private _changingColor: boolean;
+    private _colorChangeTime: number;
+    private _colors: any[];
+    private _colorChangeIndex: number;
+    private _interval: NodeJS.Timer;
     constructor(container){
 
         this._camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 )
