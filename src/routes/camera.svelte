@@ -360,5 +360,20 @@ onMount(() => {
         });
     });
 
+    closeButton.on('about', () => {
+        // about.open()
+    })
+
+    closeButton.on('click', () => {
+        // Text.clear()
+        // voice.stop()
+        music.stop()
+        camera.close().then( () => {
+            closeButton.end()
+        })
+        // shutter.remove()
+    })
+
+
 })
 </script>
