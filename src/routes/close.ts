@@ -45,7 +45,7 @@ export default class Close extends EventEmitter{
 
 		const restText = document.createElement('div')
 		restText.id = 'rest'
-		restText.innerHTML = '<a onclick="window.location.reload()">restart</a> or <div id="clickHere">learn more</div> about how i work'
+		restText.innerHTML = '<a onclick="window.location.reload()">restart</a> or <div id="clickHere">learn more</div>'
 		textContainer.appendChild(restText)
 
 		restText.querySelector('#clickHere').addEventListener('click', () => {

@@ -1,6 +1,6 @@
 <script type='ts'>
 
-// import './camera.scss';
+import './camera.scss';
 
 import * as THREE from 'three';
 import TWEEN from 'tween.js';
@@ -8,9 +8,11 @@ import * as Tone from 'tone';
 import { onMount } from 'svelte';
 
 import Config from './config';
+import Shutter from './shutter';
 import Music from './music';
 import StartAudioContext from 'startaudiocontext';
 import Close from './close';
+import MusicPosition from './position';
 
 
 const CAMERA_DIST = 10
@@ -348,6 +350,7 @@ onMount(() => {
     Config.fadeOutTime = Tone.Time('4m').toSeconds();
 
     const camera = new Camera( document.body );
+    const shutter = new Shutter( document.body );
     const closeButton = new Close(document.body);
     const music = new Music();
 
@@ -357,6 +360,9 @@ onMount(() => {
             closeButton.show()
             const time = music.start()
             // return voice.intro(time)
+        }).then( () => {
+            // voice.fill()
+            shutter.show()
         });
     });
 
@@ -371,9 +377,84 @@ onMount(() => {
         camera.close().then( () => {
             closeButton.end()
         })
-        // shutter.remove()
+        shutter.remove()
     })
 
+    let retries = 0
+
+    shutter.on('click', () => {
+
+        //increment the position
+        MusicPosition.position++
+
+        music.fill()
+        // voice.endFill()
+
+        camera.takePicture()
+
+        // camera.label().then((labels) => {
+
+        //     return voice.load(labels)
+
+        // }).then((lines) => {
+        //     // this is so the music doesn't drop out when the transition happens
+        //     // while in a background tab
+        //     return WhenVisible(lines)
+        // }).then((lines) => {
+
+        //     voice.endWait()
+
+        //     return music.endFill().then( (time) => {
+        //         camera.bounce()
+        //         return voice.speak(lines, time)
+        //     })
+
+        // }).then(() => {
+        //     voice.fill()
+        //     shutter.show()
+        //     return camera.resume()
+        // }).then(() => {
+        //     //ENDING
+        //     if (MusicPosition.end){
+        //         Text.clear()
+        //         camera.end().then(() => {
+        //             camera.close()
+        //             closeButton.end()
+        //         })
+        //         music.end()
+        //         closeButton.hide()
+        //         shutter.remove()
+        //     }
+        // }).catch((err) => {
+
+        //     WhenVisible().then(() => {
+        //         // errorr!!!
+        //         console.log(err)
+
+        //         MusicPosition.position--
+        //         Text.clear()
+        //         voice.endWait()
+                
+        //         retries++
+        //         if (retries > 2){
+        //             camera.error()
+        //             closeButton.hide()
+        //             voice.error().then(() => {
+        //                 closeButton.end()				
+        //             })
+        //             music.stop()
+        //         } else {
+
+        //             music.endFill().then((time) => {
+        //                 return voice.tryAgain(time)
+        //             }).then( () => {
+        //                 camera.resume()
+        //                 shutter.show()
+        //             })
+        //         }
+        //     })
+        // })
+    })
 
 })
 </script>
