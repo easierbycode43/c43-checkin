@@ -415,23 +415,23 @@ onMount(() => {
                 return voice.speak( lines, time )
             })
 
-        })  //.then(() => {
+        }).then(() => {
         //     voice.fill()
-        //     shutter.show()
-        //     return camera.resume()
-        // }).then(() => {
+            shutter.show()
+            return camera.resume()
+        }).then(() => {
         //     //ENDING
-        //     if (MusicPosition.end){
+            if (MusicPosition.end){
         //         Text.clear()
-        //         camera.end().then(() => {
-        //             camera.close()
-        //             closeButton.end()
-        //         })
-        //         music.end()
-        //         closeButton.hide()
-        //         shutter.remove()
-        //     }
-        // }).catch((err) => {
+                camera.end().then(() => {
+                    camera.close()
+                    closeButton.end()
+                })
+                music.end()
+                closeButton.hide()
+                shutter.remove()
+            }
+        })  //.catch((err) => {
 
         //     WhenVisible().then(() => {
         //         // errorr!!!
