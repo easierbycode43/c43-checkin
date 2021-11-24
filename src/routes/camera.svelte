@@ -65,7 +65,7 @@ class Canvas {
 
         this._colorChangeTime = 0
 
-        this._colorChangeTime = 0
+        this._colorChangeIndex = 0
 
         this._colors = [[7,222,0],[9,51,255],[93,17,255],[101,177,255],[255,42,2],[255,181,115],[250,196,0],[5,153,0],[255,251,83],[46,220,0],[246,168,0],[182,87,255],[194,208,0]]
             .map((rgb) => new THREE.Color(rgb[0] / 255, rgb[1] / 255, rgb[2] / 255))
