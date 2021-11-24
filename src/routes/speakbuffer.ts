@@ -5,7 +5,7 @@ const {
     ToneAudioBuffer: Buffer,
     ToneBufferSource: BufferSource
 } = Tone;
-// import Text from 'voice/Text'
+import Text from './text'
 import VoiceEffects from './voiceeffects';
 
 
@@ -42,7 +42,7 @@ function play(text, buffer, time, effect='dry', label){
 
 		source.start(time)
 		source.onended = done
-		// Text.show(text, time, duration, label)
+		Text.show(text, time, duration, label)
 	}).then(() => {
 		currentPlaying.splice(currentPlaying.indexOf(source), 1)
 	})

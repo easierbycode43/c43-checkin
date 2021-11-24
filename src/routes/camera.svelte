@@ -15,6 +15,7 @@ import StartAudioContext from 'startaudiocontext';
 import Close from './close';
 import MusicPosition from './position';
 import Label from './label';
+import Text from './text';
 
 
 const CAMERA_DIST = 10
@@ -358,6 +359,9 @@ onMount(() => {
     const voice = new Voice();
 
     new Tone.ToneAudioBuffers(music.buffers, () => {
+        
+        Text.appendTo( document.body )
+        
         camera.open().then(() => {
             console.log( '!! huzzah !!' );
             closeButton.show()
@@ -374,7 +378,7 @@ onMount(() => {
     })
 
     closeButton.on('click', () => {
-        // Text.clear()
+        Text.clear()
         // voice.stop()
         music.stop()
         camera.close().then( () => {
@@ -422,7 +426,7 @@ onMount(() => {
         }).then(() => {
         //     //ENDING
             if (MusicPosition.end){
-        //         Text.clear()
+                Text.clear()
                 camera.end().then(() => {
                     camera.close()
                     closeButton.end()
