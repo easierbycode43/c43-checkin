@@ -7,12 +7,14 @@ import TWEEN from 'tween.js';
 import * as Tone from 'tone';
 import { onMount } from 'svelte';
 
+import Voice from './voice';
 import Config from './config';
 import Shutter from './shutter';
 import Music from './music';
 import StartAudioContext from 'startaudiocontext';
 import Close from './close';
 import MusicPosition from './position';
+import Label from './label';
 
 
 const CAMERA_DIST = 10
@@ -276,7 +278,7 @@ class Camera {
 	}
 
 	label() {
-		// return Label(this._getImage())
+		return Label(this._getImage())
 	}
 
 	/**
@@ -353,6 +355,7 @@ onMount(() => {
     const shutter = new Shutter( document.body );
     const closeButton = new Close(document.body);
     const music = new Music();
+    const voice = new Voice();
 
     new Tone.ToneAudioBuffers(music.buffers, () => {
         camera.open().then(() => {
@@ -392,24 +395,27 @@ onMount(() => {
 
         camera.takePicture()
 
-        // camera.label().then((labels) => {
+        camera.label().then((labels) => {
 
-        //     return voice.load(labels)
+                return voice.load(labels)
 
-        // }).then((lines) => {
+        }).then((lines) => {
         //     // this is so the music doesn't drop out when the transition happens
         //     // while in a background tab
         //     return WhenVisible(lines)
-        // }).then((lines) => {
+                return lines;
+        }).then((lines) => {
+
+            console.log({ lines });
 
         //     voice.endWait()
 
-        //     return music.endFill().then( (time) => {
-        //         camera.bounce()
-        //         return voice.speak(lines, time)
-        //     })
+            return music.endFill().then( (time) => {
+                camera.bounce()
+                return voice.speak( lines, time )
+            })
 
-        // }).then(() => {
+        })  //.then(() => {
         //     voice.fill()
         //     shutter.show()
         //     return camera.resume()

@@ -3,7 +3,7 @@
 
 export default {
     startingPosition: 0,
-    cloudVision : true,
+    cloudVision : false,  //true,
     quantizeLevel : '4n',
     name : 'Giorgio Cam',
     intro : true,
