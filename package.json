@@ -6,7 +6,8 @@
     "build": "svelte-kit build",
     "preview": "svelte-kit preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
+    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+    "mary": "../marytts-5.2/bin/marytts-server"
   },
   "devDependencies": {
     "@sveltejs/kit": "next",
