@@ -34,7 +34,7 @@
     }
 
     :global(body) {
-        background-color: black;
+        background-color: #404042;
         color: #fafcfe;
         font-family: Arial,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
         margin: 0;
@@ -76,6 +76,7 @@
         background: linear-gradient(rgb(157 66 132) 0%, rgb(119,28,94) 100%);
         padding: 0.8rem 1rem 0.7rem;
         border: 0.2rem solid rgb(42,0,17);
+        border-radius: 0.6rem;
         cursor: pointer;
         text-transform: capitalize;
     }
