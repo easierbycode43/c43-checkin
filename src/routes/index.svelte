@@ -10,7 +10,7 @@
 
 
 <nav>
-    <h1>CHECK-IN</h1>
+    <h1><span class='logo'>C43</span> CHECK-IN</h1>
 </nav>
 
 <ul>
@@ -24,7 +24,15 @@
 </ul>
 
 
-<style>
+<style type="scss">
+    @font-face {
+        font-family: 'Teko';
+        font-style: normal;
+        font-weight: 400;
+        src: local(''),
+            url('/teko-v14-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    }
+
     :global(body) {
         background-color: black;
         color: #fafcfe;
@@ -35,11 +43,15 @@
         --header-height: 120px;
     }
     h1 {
+        font-size: xx-large;
+        letter-spacing: 0.091em;
         text-shadow: 0 1px rgb(250 252 254 / 65%);
-        letter-spacing: 1.3px;
+        .logo {
+            font-family: Teko;
+        }
     }
     nav {
-        background-color: #23a455;
+        background-color: #9D4284;
         color: #003100;
         height: var(--header-height);
         padding: 10px 25px;
@@ -61,9 +73,9 @@
     }
     .btn {
         color: rgb(201, 255, 251);
-        background: linear-gradient(rgb(35, 164, 85) 0%, rgb(0, 126, 47) 100%);
+        background: linear-gradient(rgb(157 66 132) 0%, rgb(119,28,94) 100%);
         padding: 0.8rem 1rem 0.7rem;
-        border: 0.2rem solid rgb(0, 126, 47);
+        border: 0.2rem solid rgb(42,0,17);
         cursor: pointer;
         text-transform: capitalize;
     }
