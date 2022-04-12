@@ -1,10 +1,19 @@
 @import './common.scss';
 
+@font-face {
+	font-family: 'Teko';
+	font-style: normal;
+	font-weight: 400;
+	src: local(''),
+		 url('/teko-v14-latin-regular.woff2') format('woff2');
+}
+
 #closeButton {
 	@include closeButton;
 }
 
 #end {
+	font-family: Teko;
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -22,10 +31,11 @@
 		position: absolute;
 		width: 100%;
 		line-height: 60px;
-		font-size: 32px;
+		font-size: 50px;
 		top: 50%;
 		transform: translate(0%, -50%);
-	    letter-spacing: 1px;
+	    // letter-spacing: 1px;
+		letter-spacing: 0.091em;
 		text-align: center;
 
 		#clickHere {

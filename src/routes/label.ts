@@ -46,10 +46,10 @@ export default function Label(canvas){
 				// 	score : 0.8
 				// }])
 				success([{
-					label : models[Math.floor(Math.random() * models.length)],
+					label : c43Models[Math.floor(Math.random() * c43Models.length)],
 					score : 0.8
 				}, {
-					label : models[Math.floor(Math.random() * models.length)],
+					label : c43Models[Math.floor(Math.random() * c43Models.length)],
 					score : 0.8
 				}])
 			}, 200)
@@ -140,4 +140,12 @@ let models = [
 	'teddy bear',
 	'hair drier',
 	'toothbrush'
+]
+
+let c43Models = [
+	'Daniel',
+	'Paul and his dog Blue',
+	'Bill',
+	'Optimus',
+	'Bologna'
 ]
