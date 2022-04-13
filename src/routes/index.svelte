@@ -43,15 +43,19 @@
         --header-height: 120px;
     }
     h1 {
+        color: #FFD66E;
         font-size: xx-large;
         letter-spacing: 0.091em;
         text-shadow: 0 1px rgb(250 252 254 / 65%);
         .logo {
+            color: rgb(250 252 254 / 65%);
             font-family: Teko;
+            text-shadow: 0 1px #2a0011;
         }
     }
     nav {
         background-color: #9D4284;
+        box-shadow: 0 2px 4px #0000007f;
         color: #003100;
         height: var(--header-height);
         padding: 10px 25px;
