@@ -1,4 +1,4 @@
-$closeSize : 25px;
+$closeSize : 45px;
 
 @mixin closeButton {
 	position: absolute;
@@ -6,8 +6,8 @@ $closeSize : 25px;
 	right: 20px;
 	width: $closeSize;
 	height: $closeSize;
-	background-image: url(/x_button.png);
-    background-size: 100% 100%;
+	// background-image: url(/x_button.png);
+    // background-size: 100% 100%;
 	color: white;
 	pointer-events: none;
 	opacity: 0;
@@ -15,6 +15,12 @@ $closeSize : 25px;
 	z-index: 100001;
 	transition: transform 0.2s;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
+
+	box-shadow: 0px 2px rgb(255 214 110 / 35%);
+    font-weight: bold;
+    font-size: 18px;
+	line-height: 65px;
+    overflow-x: hidden;
 
 	&.visible {
 		opacity: 1;

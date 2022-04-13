@@ -12,6 +12,7 @@ export default class Close extends EventEmitter{
 
 		this._closeButton = document.createElement('div')
 		this._closeButton.id = 'closeButton'
+		this._closeButton.innerText = '.: X :.'
 		container.appendChild(this._closeButton)
 
 		this._closeButton.addEventListener('click', (e) => {
@@ -45,11 +46,7 @@ export default class Close extends EventEmitter{
 
 		const restText = document.createElement('div')
 		restText.id = 'rest'
-		restText.innerHTML = '<a onclick="window.location.reload()">restart</a> or <div id="clickHere">learn about C43</div>'
+		restText.innerHTML = '<a onclick="window.location.reload()">restart</a> or <a href="/">learn about C43</a>'
 		textContainer.appendChild(restText)
-
-		restText.querySelector('#clickHere').addEventListener('click', () => {
-			this.emit('about')
-		})
 	}
 }
