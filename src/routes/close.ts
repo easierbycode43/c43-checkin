@@ -12,7 +12,7 @@ export default class Close extends EventEmitter{
 
 		this._closeButton = document.createElement('div')
 		this._closeButton.id = 'closeButton'
-		this._closeButton.innerText = '.: X :.'
+		this._closeButton.innerText = 'X'
 		container.appendChild(this._closeButton)
 
 		this._closeButton.addEventListener('click', (e) => {
