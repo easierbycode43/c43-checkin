@@ -10,6 +10,8 @@
     "mary": "../marytts-5.2/bin/marytts-server"
   },
   "devDependencies": {
+    "@iconify-icons/fluent": "^1.2.6",
+    "@iconify/svelte": "^2.2.1",
     "@sveltejs/kit": "next",
     "sass": "^1.43.4",
     "svelte": "^3.42.6",

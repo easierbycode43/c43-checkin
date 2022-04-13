@@ -1,4 +1,7 @@
 <script>
+    import Icon from '@iconify/svelte';
+    import fluentPhone from '@iconify-icons/fluent/phone-key-24-regular';
+
     let members = [
         { name: 'Daniel J', email: 'd*****@easierbycode.com', checkedIn: true },
         { name: 'Paul B', email: 'p*****@bunyan.com', checkedIn: true },
@@ -10,7 +13,7 @@
 
 
 <nav>
-    <h1><span class='logo'>C43</span> CHECK-IN</h1>
+    <h1><span class='logo'>C43</span> CHECK-IN<Icon icon={fluentPhone} /></h1>
 </nav>
 
 <ul>
@@ -43,10 +46,14 @@
         --header-height: 120px;
     }
     h1 {
+        align-items: stretch;
         color: #FFD66E;
+        display: flex;
         font-size: xx-large;
+        justify-content: space-evenly;
         letter-spacing: 0.091em;
         text-shadow: 0 1px rgb(250 252 254 / 65%);
+        
         .logo {
             color: rgb(250 252 254 / 65%);
             font-family: Teko;
